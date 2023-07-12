@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Pro2.Models.Animal>
+@{
+    ViewBag.Title = "Admin";
+}
+
+<div class="centeredDiv">
+    <p class="newAnimal">Add New Animal:</p>
+    <a class="btn" role="button" asp-action="CreateAnimal" asp-controller="Admin">Add</a>
+
+    <partial name="_CategoryFilter" model="new Category()"></partial>
+</div>
+<table class="table table-bordered table-responsive">
+    <tr >
+        <th>Image</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var animal in Model) {
+        <tr>
+            <td class="tdImage"><img class="images" src="@animal.PicturePath" /></td>
+            <td class="tdName">@animal.AnimalName</td>
+            <td class="tdAge">@animal.AnimalAge</td>
+            <td class="tdDescriptionAdminPanel">@animal.Description</td>
+            <td class="tdEdit"><a class="btn" role="button" asp-action="Edit" asp-route-id="@animal.AnimalId" asp-controller="Admin">Edit</a></td>
+            <td class="tdDelete"><a class="btn" role="button" asp-action="Delete" asp-route-id="@animal.AnimalId" asp-controller="Admin">Delete</a></td>
+        </tr>
+    }
+</table>
+
+
+<script>
+    $('#Category').change(function(){
+        $('.CategoryForm').submit();
+    })
+</script>

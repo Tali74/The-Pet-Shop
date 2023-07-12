@@ -1,0 +1,7 @@
+﻿@model Comment
+
+<form asp-action ="AddComment">
+    <input asp-for="CommentText"/>
+    <input asp-for="AnimalId" type="hidden"/>
+    <input class="btn" type="submit" value="Add Comment" />
+</form>

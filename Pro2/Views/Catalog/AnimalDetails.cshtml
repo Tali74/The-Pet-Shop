@@ -1,0 +1,37 @@
+﻿@model Pro2.Models.Animal
+@{
+    ViewBag.Title = "Detailes";
+}
+
+    <p class="p">Full Details of @Model.AnimalName:</p>
+    <table style="table-layout:unset;" class="table table-bordered table-responsive">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>All Comments</th>
+            <th>Add Comment</th>
+        </tr>
+        <tr>
+            <td> <img class="images" src="@Model.PicturePath" /></td>
+            <td>@Model.AnimalName</td>
+            <td>@Model.AnimalAge</td>
+            <td>@Model.Category!.CategoryName</td>
+            <td>@Model.Description </td>
+            <td>
+                @foreach (var comment in Model.Comments!)
+                {
+                    <div class="commentSection">
+                        <p>@comment.CommentText</p>
+                    </div>
+                }
+            </td>
+            <td>
+               <partial name="_AddCommentForm" model="new Comment{AnimalId = Model.AnimalId}"></partial>
+            </td>
+        </tr>
+
+    </table>
+    <a class="btn" asp-action="Index">Back to List</a>

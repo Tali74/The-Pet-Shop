@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Pro2.Models.Animal>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+    <p class="p">Choose a Category of Pets to Display:</p>
+    <div class="centeredDiv">
+    <partial name="_CategoryFilter" model="new Category()"></partial>
+    </div>
+
+
+ <table class="table table-bordered table-responsive">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Find Out More</th>
+        </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td class="tdImage"> <img class="images" src="@animal.PicturePath" /></td>
+                <td class="tdName">@animal.AnimalName</td>
+                <td class="tdDescription">@animal.Description</td>
+                <td class="tdCatalog"><a class="btn btn-outline-info active" role="button" asp-action="AnimalDetails" asp-route-id="@animal.AnimalId" asp-controller="Catalog">Details</a></td>
+            </tr>
+        }
+    </table>
+

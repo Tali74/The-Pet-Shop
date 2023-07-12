@@ -1,0 +1,60 @@
+﻿@model Pro2.Models.Animal
+
+@{
+    var categories = ViewBag.Categories as IEnumerable<Category>;
+    ViewBag.Title = "Edit";
+}
+
+
+<p class="p">Edit The Animal:</p>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div class="row justify-content-around">
+        <div class="col-5">
+            <input asp-for="AnimalId" type="hidden"/>
+            <div class="form-group">
+                <label asp-for="AnimalName" class="control-label">Animal Name</label>
+                <span asp-validation-for="AnimalName" class=" text-danger"></span>
+                <input asp-for="@Model.AnimalName" required placeholder="Animal Name" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="AnimalAge" class="control-label">Animal Age</label>
+                <span asp-validation-for="AnimalAge" class=" text-danger"></span>
+                <input asp-for="@Model.AnimalAge" required placeholder="Age" class="form-control" min="1" max="50" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <span asp-validation-for="Description" class=" text-danger"></span>
+                <input asp-for="@Model.Description" required placeholder="Description" class="form-control" maxlength="500" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="PicturePath" class="control-label">Picture File</label><br />
+                <label class="control-label">corrent Path: @Model.PicturePath</label>
+                <span asp-validation-for="PicturePath" class=" text-danger"></span>
+                <input asp-for="@Model.PictureFile" class="form-control PictureFile" type="file" />
+                <input asp-for="@Model.PicturePath" type="hidden" />
+            </div>
+            <br />
+
+            <div class="centeredDiv">
+                Category
+                <select asp-for="CategoryId">
+                    @foreach (var item in categories!) {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <input class="btn btn-outline-primary active" role="button" type="submit" value="Edit Animal" />
+            </div>
+        </div>
+        <div>
+            <img src="@Model.PicturePath" height="150"/>
+        </div>
+    </div>
+</form>
+
+

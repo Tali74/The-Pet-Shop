@@ -1,0 +1,21 @@
+﻿@model Category
+@{
+    var categories = ViewBag.Categories as IEnumerable<Category>;
+}
+<form asp-action="Index" class="CategoryForm">
+    <fieldset>
+        Choose Category
+        <select asp-for="CategoryId" id="Category">
+            <option value="0">All Animals</option>
+            @foreach (var item in categories!) {
+                <option value="@item.CategoryId">@item.CategoryName</option>
+            }
+        </select>
+    </fieldset>
+</form>
+
+<script>
+    $('#Category').change(function () {
+        $('.CategoryForm').submit();
+    })
+</script>

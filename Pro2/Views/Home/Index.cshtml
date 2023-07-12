@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Pro2.Models.Animal>
+
+@{
+    ViewBag.Title = "Welcome";
+}
+        <p class="p">The Top 2 Most Commented Pets:</p>
+
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Number of Comments</th>
+            </tr>
+            @foreach (var animal in Model)
+            {
+                <tr>
+                    <td class="tdImage"> <img class="images" src="@animal.PicturePath" /></td>
+                    <td class="tdName">@animal.AnimalName</td>
+                    <td class="tdDescription">@animal.Description</td>
+                    <td class="tdNumOfComments">@animal.Comments!.Count()</td>
+                </tr>
+            }
+        </table>
+

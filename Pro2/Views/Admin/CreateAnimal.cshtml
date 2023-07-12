@@ -1,0 +1,59 @@
+﻿@model Pro2.Models.Animal
+
+@{
+    var categories = ViewBag.Categories as IEnumerable<Category>;
+    ViewBag.Title = "Create";
+}
+
+<p class="p">Add a New Animal:</p>
+
+<form asp-action="CreateAnimal" enctype="multipart/form-data">
+    <div class="row justify-content-around">
+        <div class="col-5">
+            <div class="form-group">
+                <label asp-for="AnimalName" class="control-label">Animal Name</label>
+                <span asp-validation-for="AnimalName" class=" text-danger"></span>
+                <input asp-for="@Model.AnimalName" required placeholder="Animal Name" class="form-control" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="AnimalAge" class="control-label">Animal Age</label>
+                <span asp-validation-for="AnimalAge" class="text-danger"></span>
+                <input asp-for="@Model.AnimalAge" required placeholder="Age" class="form-control" min="1" max="50" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <input asp-for="@Model.Description" required placeholder="Description" class="form-control" maxlength="500" />
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="PicturePath" class="control-label">Picture Path</label>
+                <span asp-validation-for="PicturePath" class="text-danger"></span>
+                <input asp-for="@Model.PictureFile" class="form-control PictureFile" type="file" />
+                <input asp-for="@Model.PicturePath" class="form-control PicturePath invisible" />
+            </div>
+            <br />
+            <div class="centeredDiv">
+                Category
+                <select asp-for="CategoryId">
+                    @foreach (var item in categories!) {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <input class="btn btn-outline-primary active" role="button" type="submit" value="Add Animal" />
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<script>
+    $('.PictureFile').change(function(){
+        $('.PicturePath').val($('.PictureFile').val())
+        console.log("asdas");
+    })
+</script>

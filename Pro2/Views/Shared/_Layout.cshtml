@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" asp-append-version="true">
+    <script src="~/scripts/jquery.js"></script>
+    <script src="~/scripts/jquery.validate.min-1.17.0.js"></script>    <!-- ולידציה מהצד של הקליינט-->
+    <script src="~/scripts/jquery.validate.unobtrusive.min-3.2.10.js"></script>       <!-- ולידציה מהצד של הקליינט-->
+</head>
+<body>
+    <div>
+        <header>
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Catalog" asp-action="Index">Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h1 class="header">Welcome to the Pet Shop</h1>
+            @RenderBody()<!-- הפונקציה שמקשרת ומציגה את העמוד הזה בשאר התצוגות-->
+        </main>
+    </div>
+   
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/popper.js"></script> <!-- ספרייה של צד שלישי(הרחבה לבוטסטרפ)-->
+
+    </div>
+
+</body>
+</html>
